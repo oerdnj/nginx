@@ -1,6 +1,15 @@
 #!/usr/bin/make -f
 export DH_VERBOSE=1
 
+include /usr/share/dpkg/default.mk
+
+WITH_SYSTEMD = --with=systemd
+ifeq (Ubuntu,$(DEB_VENDOR))
+  ifeq ($(DEB_DISTRIBUTION),$(filter $(DEB_DISTRIBUTION),precise))
+    WITH_SYSTEMD :=
+  endif
+endif
+
 export DEB_BUILD_MAINT_OPTIONS=hardening=+all
 debian_cflags:=$(shell dpkg-buildflags --get CFLAGS) $(shell dpkg-buildflags --get CPPFLAGS)
 debian_ldflags:=$(shell dpkg-buildflags --get LDFLAGS)
@@ -140,7 +149,7 @@ extras_configure_flags := \
 			--add-dynamic-module=$(MODULESDIR)/ngx_http_substitutions_filter_module
 
 %:
-	dh $@ --with systemd
+	dh $@ $(WITH_SYSTEMD)
 
 override_dh_auto_configure: config_patch_modules $(foreach flavour,$(FLAVOURS),config.arch.$(flavour))
 override_dh_auto_build:     $(foreach flavour,$(FLAVOURS),build.arch.$(flavour))
