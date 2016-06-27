@@ -1,6 +1,13 @@
-Description: Use linker flags from environment for perl (dpkg-buildflags).
- Necessary for hardening flags.
-Author: Christos Trochalakis <yatiohi@ideopolis.gr>
+From: Kartik Mistry <kartik@debian.org>
+Date: Mon, 27 Jun 2016 09:28:33 +0200
+Subject: perl-use-dpkg-buildflags
+
+---
+ src/http/modules/perl/Makefile.PL | 4 ++++
+ 1 file changed, 4 insertions(+)
+
+diff --git a/src/http/modules/perl/Makefile.PL b/src/http/modules/perl/Makefile.PL
+index 03348b5..7d544ae 100644
 --- a/src/http/modules/perl/Makefile.PL
 +++ b/src/http/modules/perl/Makefile.PL
 @@ -3,6 +3,7 @@
