@@ -13,6 +13,7 @@
 		fi \
 	endscript
 	postrotate
-		invoke-rc.d nginx rotate >/dev/null 2>&1
+		PID=$(awk 'BEGIN { RS="[;{}]" } { if ($1 == "pid") { print $2; exit; } }' /etc/nginx/nginx.conf)
+		start-stop-daemon --stop --signal USR1 --quiet --pidfile ${PID:-/run/nginx.pid} --name nginx
 	endscript
 }
