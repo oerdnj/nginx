@@ -1,3 +1,18 @@
+nginx (1.10.3-1) unstable; urgency=medium
+
+  [ Christos Trochalakis ]
+  * New upstream version 1.10.3
+
+  [ Ondřej Surý ]
+  * Make the build dependency on systemd optional
+  * Add lintian-override for dh-systemd mangling
+  * Fix the log rotation when using upstart
+  * Disable parallel builds to unbreak precise
+  * Add and enable SPDY patch to nginx 1.10.x
+  * Disable PIE build
+
+ -- Ondřej Surý <ondrej@debian.org>  Tue, 07 Feb 2017 14:41:02 +0100
+
 nginx (1.10.2-4) unstable; urgency=medium
 
   * Switch module reloading logic to dpkg triggers.
