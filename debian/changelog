@@ -1,3 +1,14 @@
+nginx (1.11.10-0~exp0) experimental; urgency=medium
+
+  * Make the build dependency on systemd optional
+  * Add lintian-override for dh-systemd mangling
+  * Fix the log rotation when using upstart
+  * Disable parallel builds to unbreak precise
+  * Add and enable SPDY patch to nginx 1.11.x
+  * New upstream version 1.11.10
+
+ -- Ondřej Surý <ondrej@debian.org>  Wed, 15 Feb 2017 15:23:21 +0100
+
 nginx (1.11.9-1~exp2) experimental; urgency=medium
 
   * debian/rules:
